@@ -20,10 +20,21 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :test, :development do
-  gem 'rspec-rails', '~> 2.0'
-  gem 'spork', '~> 1.0rc'
+
+
+group :development do
+  gem 'rspec-rails'
+  gem 'guard'
+  gem 'guard-rspec'
   gem 'annotate', '~> 2.4.1.beta'
+end
+
+group :test do
+  gem 'rspec'
+  gem 'growl'
+  gem 'rb-fsevent'
+  gem 'spork-rails'
+  gem 'guard-spork'
 end
 
 gem 'jquery-rails'

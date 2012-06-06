@@ -13,4 +13,5 @@ doc/app
 .rvmrc
 .DS_Store
 config/database.yml
+Guardfile
 
