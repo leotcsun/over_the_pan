@@ -1,0 +1,8 @@
+<h1>Celebrities</h1>
+<ul class="celebrities">
+  <%= @celebrities.each do |celeb| %>
+    <li>
+      <%= link_to celeb.domain, celeb %>
+    </li>
+  <% end %>
+</ul>

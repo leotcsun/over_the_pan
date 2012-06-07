@@ -2,15 +2,15 @@
 #
 # Table name: celebrities
 #
-#  id          :integer         not null, primary key
-#  uid         :integer
-#  screen_name :string(255)
-#  created_at  :datetime        not null
-#  updated_at  :datetime        not null
+#  id         :integer         not null, primary key
+#  uid        :integer
+#  domain     :string(255)
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
 #
 
 class Celebrity < ActiveRecord::Base
-  attr_accessible :uid, :screen_name
+  attr_accessible :uid, :domain
 
-  validates :screen_name, presence: true
+  validates :domain, presence: true, uniqueness: { case_sensitive: false }
 end
