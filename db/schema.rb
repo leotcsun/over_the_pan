@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120606010814) do
+ActiveRecord::Schema.define(:version => 20120607025735) do
 
   create_table "celebrities", :force => true do |t|
     t.integer  "uid"
-    t.string   "screen_name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "domain"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "celebrities", ["uid"], :name => "index_celebrities_on_uid"

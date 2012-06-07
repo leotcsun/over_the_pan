@@ -10,5 +10,6 @@ require 'spec_helper'
 #     end
 #   end
 # end
-describe CelerbrityHelper do
+describe CelebritiesHelper do
 end
+
