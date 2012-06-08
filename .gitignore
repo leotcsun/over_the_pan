@@ -14,4 +14,6 @@ doc/app
 .DS_Store
 config/database.yml
 Guardfile
+public/assets/
+.sass-cache/
 

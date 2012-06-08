@@ -1,6 +1,8 @@
 OverThePan::Application.routes.draw do
 
+  root to: "celebrities#index"
   resources :celebrities
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
