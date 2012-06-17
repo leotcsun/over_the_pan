@@ -1,25 +1,24 @@
 class AuthenticationsController < ApplicationController
 
   def create
-    omniauth = request.env['omniauth.auth']
-    authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
+    # render request.env['omniauth.auth'].to_yaml
 
-    if authentication
-      sign_in_and_redirect(:user, authentication.user)
-    elsif current_user
-      current_user.authentications.create(provider: omniauth['provider'], uid: omniauth['uid'])
-      flash[:notice] = 'Authentication Successful'
-      redirect_to celebrity_url
+    auth_response = request.env['omniauth.auth']
+    user = User.find_by_uid(auth_response['uid'])
+
+    if user
+      user.update_access_token(auth_response)
+      sign_in(:user, user)
     else
-      user = User.new
-      user.apply_omniauth(omniauth)
+      user = User.create(uid: auth_response['uid'])
+      user.save_auth(auth_response)
       if user.save
-        flash[:notice] = 'Authentication Successful'
-        sign_in_and_redirect(:user, authentication.user)
+        flash[:notice] = 'Signin Successful'
       else
-        session[:omniauth] = omniauth.except('extra')
-        redirect_to new_user_registration_url
+        flash[:notice] = 'Signin Failed'
       end
     end
+
+    redirect_to root_path
   end
 end
