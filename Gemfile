@@ -9,6 +9,8 @@ gem 'pg'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-weibo-oauth2'
+gem 'rest-client'
+gem 'json'
 
 # Gems used only for assets and not required
 # in production environments by default.

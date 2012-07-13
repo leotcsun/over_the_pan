@@ -38,6 +38,11 @@ class User < ActiveRecord::Base
 
   def update_access_token(auth)
     authentication.access_token = auth['credentials']['token']
+    authentication.save
+  end
+
+  def get_access_token
+    authentication.access_token
   end
 
   def password_required?

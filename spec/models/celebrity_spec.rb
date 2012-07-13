@@ -2,11 +2,12 @@
 #
 # Table name: celebrities
 #
-#  id         :integer         not null, primary key
-#  uid        :integer
-#  domain     :string(255)
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
+#  id          :integer         not null, primary key
+#  uid         :integer
+#  domain      :string(255)
+#  created_at  :datetime        not null
+#  updated_at  :datetime        not null
+#  screen_name :string(255)
 #
 
 require 'spec_helper'
