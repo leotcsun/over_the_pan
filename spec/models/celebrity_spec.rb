@@ -22,12 +22,12 @@ describe Celebrity do
     Celebrity.create!(@attr)
   end
 
-  it "should require a domain" do
-    no_name_celebrity = Celebrity.new(@attr.merge(domain: ""))
+  it "should require a uid" do
+    no_name_celebrity = Celebrity.new(@attr.merge(uid: ""))
     no_name_celebrity.should_not be_valid
   end
 
-  it "should have a unique domain" do
+  it "should have a unique uid" do
     Celebrity.create!(@attr)
     duplicate = Celebrity.new(@attr)
     duplicate.should_not be_valid

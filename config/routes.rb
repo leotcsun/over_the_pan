@@ -6,6 +6,7 @@ OverThePan::Application.routes.draw do
   resources :celebrities
 
   match '/auth/:provider/callback', to: 'authentications#create'
+  match '/celebrities/:id/sync', to: 'celebrities#sync'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

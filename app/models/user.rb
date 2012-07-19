@@ -38,7 +38,8 @@ class User < ActiveRecord::Base
 
   def update_access_token(auth)
     authentication.access_token = auth['credentials']['token']
-    authentication.save
+    Rails.logger.info { "TOKEN: #{authentication.access_token}" }
+    authentication.save!
   end
 
   def get_access_token

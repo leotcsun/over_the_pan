@@ -17,7 +17,7 @@ describe CelebritiesController do
     it "should have a list of all the celebrities" do
       get :index
       Celebrity.all.each do |celeb|
-        response.should have_selector("li", content: celeb.domain)
+        response.should have_selector("li", content: celeb.screen_name)
       end
     end
   end

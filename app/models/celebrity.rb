@@ -13,5 +13,7 @@
 class Celebrity < ActiveRecord::Base
   attr_accessible :uid, :domain, :screen_name
 
-  validates :domain, presence: true, uniqueness: { case_sensitive: false }
+  has_many :posts
+
+  validates :uid, presence: true, uniqueness: { case_sensitive: false }
 end

@@ -1,8 +1,8 @@
 <h1>Celebrities</h1>
 <ul class="celebrities">
-  <%= @celebrities.each do |c| %>
+  <% @celebrities.each do |c| %>
     <li>
-      <%= link_to c.domain, c %>
+      <%= link_to c.screen_name, c %>
     </li>
   <% end %>
 </ul>

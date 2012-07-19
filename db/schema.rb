@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120622025314) do
+ActiveRecord::Schema.define(:version => 20120714225211) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(:version => 20120622025314) do
   end
 
   add_index "celebrities", ["uid"], :name => "index_celebrities_on_uid"
+
+  create_table "posts", :force => true do |t|
+    t.integer  "author"
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.datetime "post_time"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

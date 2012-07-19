@@ -1,0 +1,8 @@
+<h2>Synch</h2>
+
+<%= form_for @celebrity do |f| %>
+  <%= f.label :screen_name, "Screen Name" %>
+  <%= f.text_field :screen_name, size: 40 %>
+
+  <%= f.submit "Refresh" %>
+<% end %>
