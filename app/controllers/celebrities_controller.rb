@@ -34,10 +34,13 @@ class CelebritiesController < ApplicationController
   end
 
   def sync
-    celebrity = Celebrity.find_by_id(params[:id])
-    if celebrity
-      response = Weibo.statuses_user_timeline(celebrity.uid)
+    @celebrity = Celebrity.find(params[:id])
+    if @celebrity
+      @celebrity.sync_posts
     end
+    # if celebrity
+      # @response = Weibo.statuses_user_timeline(celebrity.uid)
+    # end
     # render response.to_yaml
   end
 end

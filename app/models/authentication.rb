@@ -20,7 +20,7 @@ class Authentication < ActiveRecord::Base
     def get_access_token
      @@token_expire_time ||= Time.new.to_time.to_i
 
-     if @@token_expire_time <= Time.new.to_time.to_i
+      if @@token_expire_time <= Time.new.to_time.to_i
       Rails.logger.info { "token expired getting new one"}
         auth = Authentication.order("updated_at DESC").limit(1).first
         @@token_expire_time = auth.updated_at.to_time.to_i + (24 * 60 * 60 * 1000)
@@ -29,6 +29,5 @@ class Authentication < ActiveRecord::Base
         @@usable_access_token
       end
     end
-
   end
 end
