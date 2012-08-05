@@ -1,0 +1,5 @@
+<h1><%= @celebrity.screen_name %></h1>
+<br>
+<% @posts.each do |p| %>
+  <div><%= p.content %></p>
+<% end %>

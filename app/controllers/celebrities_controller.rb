@@ -31,6 +31,7 @@ class CelebritiesController < ApplicationController
 
   def show
     @celebrity = Celebrity.find(params[:id])
+    @posts = @celebrity.posts.order("weibo_id DESC")
   end
 
   def sync
@@ -38,9 +39,7 @@ class CelebritiesController < ApplicationController
     if @celebrity
       @celebrity.sync_posts
     end
-    # if celebrity
-      # @response = Weibo.statuses_user_timeline(celebrity.uid)
-    # end
-    # render response.to_yaml
+
+    redirect_to @celebrity, flash[:notice] => 'Synchornization Complete'
   end
 end

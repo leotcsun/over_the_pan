@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120714225211) do
+ActiveRecord::Schema.define(:version => 20120805214144) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -31,11 +31,17 @@ ActiveRecord::Schema.define(:version => 20120714225211) do
   add_index "celebrities", ["uid"], :name => "index_celebrities_on_uid"
 
   create_table "posts", :force => true do |t|
-    t.integer  "author"
+    t.integer  "celebrity_id"
     t.string   "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.datetime "post_time"
+    t.integer  "weibo_id",               :limit => 8
+    t.string   "original_pic"
+    t.integer  "retweeted_id",           :limit => 8
+    t.string   "retweeted_screen_name"
+    t.string   "retweeted_text"
+    t.string   "retweeted_original_pic"
   end
 
   create_table "users", :force => true do |t|
