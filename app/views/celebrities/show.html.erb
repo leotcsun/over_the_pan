@@ -1,5 +1,15 @@
 <h1><%= @celebrity.screen_name %></h1>
 <br>
 <% @posts.each do |p| %>
-  <div><%= p.content %></p>
+  <div style="border: solid;">
+    <div><%= p.content %></div>
+    <% if p.retweeted_content %>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<%= p.retweeted_content %></div>
+    <% end %>
+    <% if p.picture %>
+      <img src="<%= p.picture %>", height='300px'/>
+    <% end %>
+    <br>
+    <br>
+  </div>
 <% end %>

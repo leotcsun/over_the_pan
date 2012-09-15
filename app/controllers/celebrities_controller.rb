@@ -31,15 +31,17 @@ class CelebritiesController < ApplicationController
 
   def show
     @celebrity = Celebrity.find(params[:id])
-    @posts = @celebrity.posts.order("weibo_id DESC")
+    @posts = @celebrity.posts.order("weibo_post_id DESC")
   end
 
   def sync
     @celebrity = Celebrity.find(params[:id])
     if @celebrity
-      @celebrity.sync_posts
+      @celebrity.synchornize_post
     end
 
     redirect_to @celebrity, flash[:notice] => 'Synchornization Complete'
   end
+
+
 end

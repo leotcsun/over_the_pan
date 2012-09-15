@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120805214144) do
+ActiveRecord::Schema.define(:version => 20120915225958) do
 
   create_table "authentications", :force => true do |t|
-    t.integer  "user_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer  "user_id",      :limit => 8
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.string   "access_token"
   end
 
@@ -33,15 +33,14 @@ ActiveRecord::Schema.define(:version => 20120805214144) do
   create_table "posts", :force => true do |t|
     t.integer  "celebrity_id"
     t.string   "content"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.datetime "post_time"
-    t.integer  "weibo_id",               :limit => 8
-    t.string   "original_pic"
-    t.integer  "retweeted_id",           :limit => 8
+    t.integer  "weibo_post_id",         :limit => 8
+    t.string   "picture"
+    t.integer  "retweeted_post_id",     :limit => 8
     t.string   "retweeted_screen_name"
-    t.string   "retweeted_text"
-    t.string   "retweeted_original_pic"
+    t.string   "retweeted_content"
   end
 
   create_table "users", :force => true do |t|
