@@ -1,0 +1,10 @@
+development:
+    weibo_app_key: 686588720
+    weibo_app_secret: 609017109a1d8311686e410aca21a268
+    aws_access_key_id: AKIAJMGF6B45B7M4RVVQ
+    aws_secret_access_key: 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
+
+production:
+    weibo_app_key: 2648106672
+    weibo_app_secret: 91d791bed594716ce1ca2674f861f120
+
