@@ -17,3 +17,4 @@ Guardfile
 public/assets/
 .sass-cache/
 
+config/app_config.yml

@@ -31,12 +31,11 @@ class Celebrity < ActiveRecord::Base
     while !up_to_date
       response = Weibo.statuses_user_timeline(self.uid, params)
       break if response['statuses'].empty?
-      puts 'no more statuses to synochornize'
 
       response['statuses'].each do |status|
         # puts status.to_yaml
 
-        if (status['id'].to_i <= last_updated_post_id) || (last_updated_post_id == 0)
+        if status['id'].to_i <= last_updated_post_id
           up_to_date = true
           puts 'all posts are synchornized'
           break
