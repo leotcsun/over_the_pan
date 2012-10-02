@@ -22,6 +22,14 @@ class Celebrity < ActiveRecord::Base
     (last_post_id) ? last_post_id.weibo_post_id : 0
   end
 
+  def update_information(screen_name)
+    response = Weibo.user_show_by_screen_name(screen_name)
+
+    self.screen_name = response["screen_name"]
+    self.domain = response["domain"]
+    self.uid = response["id"]
+  end
+
   def synchornize_post(params = {})
     params[:page] = 1
     params[:count] = 200
