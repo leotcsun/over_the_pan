@@ -1,10 +1,17 @@
-<h1><%= @celebrity.screen_name %></h1>
+<h2><%= @celebrity.screen_name %></h2>
 <br>
-<% if current user %>
-  <%= link_to "Synchornize all posts by this user", @celebrity.synchornize_post %>
+
+<hr>
+
+<% if current_user %>
+  <%= link_to "Synchornize", { controller: 'celebrities', action: 'sync' },
+              id: @celebrity.id, :class => 'btn-primary btn-small' %>
 <% end %>
+
+<hr>
+
 <% @posts.each do |p| %>
-  <div style="border: solid;">
+  <div>
     <div><%= p.content %></div>
     <% if p.retweeted_content %>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;<%= p.retweeted_content %></div>
@@ -13,6 +20,10 @@
       <img src="<%= p.picture %>", height='300px'/>
     <% end %>
     <br>
+    <%= p.post_time %>
+    <br>
     <br>
   </div>
+
+  <hr>
 <% end %>
