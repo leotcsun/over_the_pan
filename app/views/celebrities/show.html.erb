@@ -1,6 +1,8 @@
 <h1><%= @celebrity.screen_name %></h1>
 <br>
-<%= link_to "Synchornize all posts by this user", @celebrity.synchornize_post %>
+<% if current user %>
+  <%= link_to "Synchornize all posts by this user", @celebrity.synchornize_post %>
+<% end %>
 <% @posts.each do |p| %>
   <div style="border: solid;">
     <div><%= p.content %></div>
