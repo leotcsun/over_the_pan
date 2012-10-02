@@ -1,10 +1,14 @@
 <br>
-<%= link_to "Click here", "/celebrities/new" %> to add a new weibo user as a celebrity"
-<h1>Celebrities</h1>
-<ul class="celebrities">
-  <% @celebrities.each do |c| %>
-    <li>
-      <%= link_to c.screen_name, c %>
-    </li>
-  <% end %>
-</ul>
+<%= link_to "Click here", Celebrity.new %> to add a new weibo user as a celebrity"
+<h2>Celebrities</h2>
+
+
+<% @celebrities.each do |c| %>
+    <div style="width: 30%; float: left;">
+    <%= link_to c.screen_name, c %>
+    </div>
+
+    <div style="align:right; float: left; width: 60%;">
+      <%= link_to "Synchornize", c.synchornize_post %>
+    </div>
+<% end %>
