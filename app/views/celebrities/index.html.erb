@@ -9,6 +9,9 @@
     </div>
 
     <div style="align:right; float: left; width: 60%;">
-      <%= link_to "Synchornize", c.synchornize_post %>
+      <%= link_to "Synchornize", { controller: 'celebrities', action: 'sync' }, class: 'btn-primary btn-small' %>
     </div>
+
+    <br>
+    <br>
 <% end %>
