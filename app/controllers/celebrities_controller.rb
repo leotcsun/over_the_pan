@@ -43,7 +43,7 @@ class CelebritiesController < ApplicationController
   def sync
     @celebrity = Celebrity.find(params[:id])
     if @celebrity
-      @celebrity.synchornize_post
+      @celebrity.synchornize_post(params)
     end
 
     redirect_to @celebrity, flash[:notice] => 'Synchornization Complete'

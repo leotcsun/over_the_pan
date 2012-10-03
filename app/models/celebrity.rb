@@ -31,13 +31,15 @@ class Celebrity < ActiveRecord::Base
   end
 
   def synchornize_post(params = {})
-    params[:page] = 1
-    params[:count] = 200
+    weibo_params = {}
+    weibo_params[:page] = 1
+    weibo_params[:count] = 200
     up_to_date = false
-    last_updated_post_id = get_last_post_id
+
+    last_updated_post_id = (params[:full_sync]) ? 0 : get_last_post_id
 
     while !up_to_date
-      response = Weibo.statuses_user_timeline(self.uid, params)
+      response = Weibo.statuses_user_timeline(self.uid, weibo_params)
       break if response['statuses'].empty?
 
       response['statuses'].each do |status|
@@ -68,7 +70,7 @@ class Celebrity < ActiveRecord::Base
 
         post.save
       end
-      params[:page] += 1
+      weibo_params[:page] += 1
 
       # puts "params[:page] #{params[:page]} #{last_update_id}"
     end

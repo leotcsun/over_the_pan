@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120916230334) do
+ActiveRecord::Schema.define(:version => 20121003060448) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id",      :limit => 8
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20120916230334) do
 
   create_table "posts", :force => true do |t|
     t.integer  "celebrity_id"
-    t.string   "content"
+    t.text     "content"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
     t.datetime "post_time"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20120916230334) do
     t.string   "picture"
     t.integer  "retweeted_post_id",     :limit => 8
     t.string   "retweeted_screen_name"
-    t.string   "retweeted_content"
+    t.text     "retweeted_content"
   end
 
   create_table "users", :force => true do |t|

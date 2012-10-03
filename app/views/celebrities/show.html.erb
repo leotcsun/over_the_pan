@@ -4,8 +4,11 @@
 <hr>
 
 <% if current_user %>
-  <%= link_to "Synchornize", { controller: 'celebrities', action: 'sync' },
-              id: @celebrity.id, :class => 'btn-primary btn-small' %>
+  <%= link_to "Synchornize", { controller: 'celebrities', action: 'sync', id: @celebrity.id },
+              :class => 'btn-primary btn-small' %>
+
+  <%= link_to "Full Synchornize", { controller: 'celebrities', action: 'sync', id: @celebrity.id, full_sync: true },
+              :class => 'btn-primary btn-small' %>
 <% end %>
 
 <hr>
@@ -17,7 +20,7 @@
       <div>&nbsp;&nbsp;&nbsp;&nbsp;<%= p.retweeted_content %></div>
     <% end %>
     <% if p.picture %>
-      <img src="<%= p.picture %>", height='300px'/>
+      <img src="<%= p.picture %>", height='300px'/>view
     <% end %>
     <br>
     <%= p.post_time %>

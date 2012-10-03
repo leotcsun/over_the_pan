@@ -1,5 +1,5 @@
 <br>
-<%= link_to "Click here", Celebrity.new %> to add a new weibo user as a celebrity"
+<%= link_to "Click here", { controller: 'celebrities', action: 'new' } %> to add a new weibo user as a celebrity
 <h2>Celebrities</h2>
 
 
@@ -9,7 +9,7 @@
     </div>
 
     <div style="align:right; float: left; width: 60%;">
-      <%= link_to "Synchornize", { controller: 'celebrities', action: 'sync' }, class: 'btn-primary btn-small' %>
+      <%= link_to "Synchornize", "celebrities/#{c.id}/sync", class: 'btn-primary btn-small' %>
     </div>
 
     <br>
