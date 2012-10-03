@@ -3,7 +3,7 @@
 #   sidekiq -C config.yml
 ---
 :verbose: false
-:concurrency:  1
+:concurrency:  3
 :queues:
   - [often, 7]
   - [default, 5]
