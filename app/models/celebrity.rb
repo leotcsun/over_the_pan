@@ -30,13 +30,13 @@ class Celebrity < ActiveRecord::Base
     self.uid = response["id"]
   end
 
-  def synchornize_post(params = {})
+  def synchornize_post(full_sync = false)
     weibo_params = {}
     weibo_params[:page] = 1
     weibo_params[:count] = 200
     up_to_date = false
 
-    last_updated_post_id = (params[:full_sync]) ? 0 : get_last_post_id
+    last_updated_post_id = (full_sync) ? 0 : get_last_post_id
 
     while !up_to_date
       response = Weibo.statuses_user_timeline(self.uid, weibo_params)

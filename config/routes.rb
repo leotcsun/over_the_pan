@@ -1,4 +1,8 @@
+require 'sidekiq/web'
+
 OverThePan::Application.routes.draw do
+
+  mount Sidekiq::Web, at: '/sidekiq'
 
   devise_for :users
 

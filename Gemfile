@@ -14,6 +14,9 @@ gem 'json'
 gem 'thin'
 gem 'paperclip'
 gem 'aws-sdk'
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
 
 # Gems used only for assets and not required
 # in production environments by default.
