@@ -43,7 +43,7 @@ class Celebrity < ActiveRecord::Base
       break if response['statuses'].empty?
 
       response['statuses'].each do |status|
-        # puts status.to_yaml
+        puts status.to_yaml
 
         if status['id'].to_i <= last_updated_post_id
           up_to_date = true
@@ -56,13 +56,24 @@ class Celebrity < ActiveRecord::Base
         post.celebrity_id = self.id
         post.content = status['text'].gsub(/[']/, '\'\'')
         post.post_time = Time.parse(status['created_at']).to_time
-        post.picture = status['original_pic'] if status['original_pic']
+
+        pic_urls = status['pic_urls'] or []
+        pic_urls ||= []
+        pic_urls.each do |pic_url|
+          post.pictures << Picture.create(post_id: post.id, url: pic_url['thumbnail_pic'].gsub("\/thumbnail\/", "\/large\/"))
+        end
 
         if status['retweeted_status']
           retweet = status['retweeted_status']
           post.retweeted_post_id = retweet['id']
           post.retweeted_content = retweet['text']
-          post.picture = retweet['oringial_pic'] if retweet['original_pic']
+
+          retweet_pic_urls = status['retweeted_status']['pic_urls'] or []
+          retweet_pic_urls ||= []
+          retweet_pic_urls.each do |pic_url|
+            post.pictures << Picture.create(post_id: post.id, url: pic_url['thumbnail_pic'].gsub("\/thumbnail\/", "\/large\/"))
+          end
+
           if retweet['user']
             post.retweeted_screen_name = retweet['user']['screen_name']
           end

@@ -18,9 +18,14 @@
     <div><%= p.content %></div>
     <% if p.retweeted_content %>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;<%= p.retweeted_content %></div>
+      <% p.pictures.each do |p| %>
+      <img src="<%= p.url %>", height='300px'/>view
+      <% end %>
     <% end %>
-    <% if p.picture %>
-      <img src="<%= p.picture %>", height='300px'/>view
+    <% if p.pictures.size > 0 && !p.retweeted_content %>
+      <% p.pictures.each do |p| %>
+      <img src="<%= p.url %>", height='300px'/>view
+      <% end %>
     <% end %>
     <br>
     <%= p.post_time %>
