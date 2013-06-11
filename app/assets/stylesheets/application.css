@@ -11,3 +11,9 @@
  *= require_self
  *= require_tree .
  */
+
+
+ .post_image {
+    max-height: 300px;
+    max-width: 300px;
+ }

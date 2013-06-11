@@ -17,14 +17,15 @@
   <div>
     <div><%= p.content %></div>
     <% if p.retweeted_content %>
-      <div>&nbsp;&nbsp;&nbsp;&nbsp;<%= p.retweeted_content %></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;@<%= p.retweeted_screen_name %></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= p.retweeted_content %></div>
       <% p.pictures.each do |p| %>
       <img src="<%= p.url %>", height='300px'/>view
       <% end %>
     <% end %>
     <% if p.pictures.size > 0 && !p.retweeted_content %>
       <% p.pictures.each do |p| %>
-      <img src="<%= p.url %>", height='300px'/>view
+      <%= link_to(image_tag(p.url, :class => "post_image", :style => "max-height: 300px; max-width: 300px"), p.url, :target => "_blank") %>
       <% end %>
     <% end %>
     <br>
