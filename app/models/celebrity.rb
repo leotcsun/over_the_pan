@@ -39,11 +39,15 @@ class Celebrity < ActiveRecord::Base
     last_updated_post_id = (full_sync) ? 0 : get_last_post_id
 
     while !up_to_date
-      response = Weibo.statuses_user_timeline(self.uid, weibo_params)
+      response = Weibo.statuses_home_timeline(weibo_params)
+
+      puts "RESPONSE@@@@@@@@@@@@@"
+      puts response.inspect
+
       break if response['statuses'].empty?
 
       response['statuses'].each do |status|
-        puts status.to_yaml
+        # puts status.to_yaml
 
         if status['id'].to_i <= last_updated_post_id
           up_to_date = true

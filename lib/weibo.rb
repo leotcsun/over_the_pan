@@ -5,6 +5,8 @@ class Weibo
 
   STATUSES_USER_TIMELINE = "#{API_BASE}/statuses/user_timeline.json"
   STATUSES_UPDATE = "#{API_BASE}/statuses/update.json"
+  STATUSES_TIMELINE_BATCH = "#{API_BASE}/statuses/timeline_batch.json"
+  STATUSES_HOME_TIMELINE = "#{API_BASE}/statuses/home_timeline.json"
 
   class << self
 
@@ -39,6 +41,17 @@ class Weibo
                                  params: params))
     end
 
+    def statuses_timeline_batch(uids, params = {})
+      params[:uids] = uids
+      params[:access_token] = Authentication.get_access_token
+      JSON.parse(RestClient.get(STATUSES_TIMELINE_BATCH,
+                                params: params))
+    end
+
+    def statuses_home_timeline(params = {})
+      params[:access_token] = Authentication.get_access_token
+      JSON.parse(RestClient.get(STATUSES_HOME_TIMELINE,
+                                params: params))
   end
 end
 
